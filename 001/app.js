@@ -35,14 +35,9 @@ console.log(pirmas());
 
 //2
 console.log(`----------2`);
+
 function antras () {
-const one = random(0, 25)
-console.log(one);
-const two = random(0, 25)
-console.log(two);
-const three = random(0, 25)
-console.log(three);
-return (one < two && two < three || three < two && two < one) ? two : (two < one && one < three || three < one && one < two) ? one : (two < three && one > three || one < three && two > three) ? three : `OMG ! Du lygus skaicia !!! spauskite ctrl+R`
+return [random(0,25),random(0,25),random(0,25)].sort((a,b) => a - b)[1]
 }
 console.log(antras());
 
