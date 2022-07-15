@@ -1,0 +1,24 @@
+{
+  "name": "delfinai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "dead-server --port=3001 --host=localhost",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saulius334/Delfinai.git"
+  },
+  "keywords": [],
+  "author": "saulius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saulius334/Delfinai/issues"
+  },
+  "homepage": "https://github.com/saulius334/Delfinai#readme",
+  "devDependencies": {
+    "dead-server": "^1.0.6"
+  }
+}
