@@ -51,5 +51,41 @@ console.log(`---------------9`);
 let skyreliai = [pirmas, antras]
 console.log(skyreliai);
 
-//10
+//10 Į 9 uždavinio masyvą, piniginę su dviem skyreliais, pridėti trečią skyrelį- masyvą su kortelėm: ['KIKA', 'Euro Vaistinė', 'Drogas', 'Ačiū', 'Lietuvos Geležinkeliai', 'Mano RIMI'];
 console.log(`---------------10`);
+skyreliai.push(['KIKA', 'Euro Vaistinė', 'Drogas', 'Ačiū', 'Lietuvos Geležinkeliai', 'Mano RIMI'])
+console.log(skyreliai);
+
+// 11 Korteles skyrelyje sudėlioti (išrūšiuoti) pagal abėcėlę;
+console.log(`---------------11`);
+skyreliai[2].sort()
+console.log(skyreliai);
+
+// 12 Į kortelių skyrelį pridėti mokėjimo kortelių 'MasterCard', 'Visa' (su rand generuokite atsitiktines reikšmes 'MasterCard' arba 'Visa' ir rašykite į masyvą) iš skirtingų bankų tiek, kad skyrelis (masyvo ilgis) pasidarytų lygus 20;
+console.log(`---------------12`);
+let pasirinkimas = [`MasterCard`, `Visa`]
+while (skyreliai[2].length < 20) {
+    skyreliai[2].push(pasirinkimas[random(0, 1)])
+}
+console.log(skyreliai[2]);
+
+// 13 Paskaičiuokite, kokio tipo kortelių ('MasterCard' arba 'Visa') yra daugiau;
+console.log(`---------------13`);
+let count = 0;
+for (const n of skyreliai[2]) {
+    n === `MasterCard` ? count = count + 1 : n === `Visa` ? count-- : count = count + 0
+}
+console.log(count > 0 ? `Daugiau MasterCard` : count < 0 ? `Daugiau Visa` : `Po lygiai`);
+
+// 14 Sukurkite masyve (piniginėje) ketvirtą elementą (skyrelį) į kurį įdėkite 10 loterijos bilietų, kurių numerius sugeneruokite atsitiktinai su rand funkcija nuo 1000000000 iki 9999999999;
+console.log(`---------------14`);
+skyreliai.push([...Array(10)].map(a => random(1000000000, 9999999999)))
+console.log(skyreliai);
+
+// 15 Loterijos bilietų masyvą išrūšiuoti nuo didžiausio numerio iki mažiausio;
+console.log(`---------------15`);
+skyreliai[3].sort((a,b) => b - a)
+console.log(skyreliai);
+
+// 16 Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
+console.log(`---------------16`);
