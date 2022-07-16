@@ -89,3 +89,21 @@ console.log(skyreliai);
 
 // 16 Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
 console.log(`---------------16`);
+let penkisimtai = [random(3, 10)]
+while (penkisimtai.reduce((a,b) => a + b) < 500) {
+    penkisimtai.push(random(3, 10))
+}
+skyreliai[1].push(...penkisimtai)
+console.log(skyreliai);
+
+//17 Patikrinti ar ką nors laimėjote. Bilieto numerius dalinkite iš 777 ir jeigu numeris išsidalins be liekanos - jūs laimėjote! Suskaičiuokite, kiek buvo laimingų bilietų.
+console.log(`---------------17`);
+let laimingi = skyreliai[3].filter(a => (a / 777) % 2 === 0)
+console.log(laimingi.length > 0 ? `Jus laimejote! Laimingu bilietu: ${laimingi.length}` : `Bandyk dar karta!`);
+
+// 18 Sukurkite penktą skyrelį ir į jį sudėkite nuotraukas: ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'] ir jas išrūšiuokite pagal žodžių ilgį taip, kad pirma eitų trumpiausi žodžiai;
+console.log(`---------------18`);
+let gyvunai = ['šuo', 'katė', 'automobilis', 'namas', 'kiemas']
+console.log(gyvunai.sort((a,b) => a.length - b.length));
+skyreliai.push(gyvunai)
+console.log(skyreliai);
