@@ -24,12 +24,32 @@ const four = pinigine.map(a => a <= 2 ? 0 : a)
 console.log(four);
 // 5 Surasti didžiausią reikšmę 1 uždavinio masyve ir paskaičiuoti kiek tokių didžiausių reikšmių masyve yra;
 console.log(`---------------5`);
-const five = pinigine.sort((a,b) => b - a)
+const five = [...pinigine].sort((a,b) => b - a)
 const five2 = five.filter((a,i,t) => a === t[0]).length
 console.log(`Didziausias pinigas: ${five[0]}`);
 console.log(`Kiek ju yra: ${five2}`);
 
 // 6 Visus masyvo elementus, kurie yra lygūs 0, pakeisti į tų elementų indeksų (vietų, numerių) reikšmes;
 console.log(`---------------6`);
+console.log(pinigine.map((a, i) => a <= 2 ? i : a));
 
-console.log(pinigine);
+// 7 Į 1 uždavinio masyvą pridėti tiek naujų reikšmių (pinigų, atsitiktinių skaičių nuo 0 iki 10), kad masyvo ilgis būtų lygiai 30;
+console.log(`---------------7`);
+let pinigine2 = pinigine.concat([...Array(30 - pinigine.length)].map(a => random(0,10)))
+console.log(pinigine2);
+
+// 8 Naudojant 1 uždavinio masyvą iš jo reikšmių sukurti dar du papildomus masyvus. Į vieną iš 1 uždavinio masyvo pridėti reikšmes mažesnes arba lygias 2 (monetas), o į kitą didesnes nei 2 (popierinius pinigus);
+console.log(`---------------8`);
+let pirmas = pinigine.filter(a => a <= 2)
+let antras = pinigine.filter(a => a > 2)
+console.log(pirmas);
+console.log(antras);
+
+
+// 9 Sukurti masyvą (piniginę su dviem skyreliais) iš dviejų elementų, kurio pirmas elementas būtų masyvas iš 8 uždavinio su monetom, o antras elementas masyvas iš 8 uždavinio su popieriniais pinigais;
+console.log(`---------------9`);
+let skyreliai = [pirmas, antras]
+console.log(skyreliai);
+
+//10
+console.log(`---------------10`);
