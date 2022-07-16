@@ -87,7 +87,26 @@ while (two.length < 100) {
 console.log(two);
 // 6 Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 5 uždavinio masyve, bet nėra antrame 5 uždavinio masyve.
 console.log(`--------6`);
-let filtered = one.filter(a => one.includes(two.forEach(a => a)))
+let filtered = one.filter(a => two.includes(a) === false)
 console.log(filtered);
 
 // 7 Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 5 uždavinio masyvuose.
+console.log(`--------7`);
+let kartojasi = one.filter(a => two.includes(a))
+console.log(kartojasi);
+
+// 8 Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 5 uždavinio masyvo reikšmės, o jo reikšmės iš būtų antrojo masyvo.
+console.log(`--------8`);
+let wtf = [...Array(Math.max(...one))]
+for (let i = 0; i < wtf.length;i++) {
+  wtf[one[i]] = two[i]
+}
+console.log(wtf);
+
+// 9 Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.
+console.log(`--------9`);
+let taisykle = [random(5,25), random(5,25), ...Array(8)]
+for(let i = 2; i < taisykle.length;i++) {
+taisykle[i] = taisykle[i - 2] + taisykle[i - 1]
+}
+console.log(taisykle);
