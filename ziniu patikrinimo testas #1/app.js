@@ -50,6 +50,5 @@ console.log(catOwners);
 // Suraskite vieną (tik vieną) vardą owners masyve,
 // kuris kartojasi (nesvarbu kiek kartų) ir jį atspausdinkite su console.log().
 console.log(`--------5`);
-// blet tokia nesamone kad nu na
 
 console.log(owners.find(a => owners.indexOf(a) !== owners.lastIndexOf(a))); 
