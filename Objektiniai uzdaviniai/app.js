@@ -64,49 +64,47 @@ pinigine1.skaiciuoti()
 console.log(`-----Troleibusai------`);
 
 class Troleibusas {
-
-    constructor(name) {
-        this.name = name
-        this.keleiviuSkaicius = 0
-        this.visiKeleiviai = 0
-    }
-
-     static bendrasKeleiviuSkaicius(keleiviuSkaicius) {
-        this.visiKeleiviai = this.visiKeleiviai + keleiviuSkaicius
-        console.log(`Bendras keleiviu skaicius: ${this.visiKeleiviai}`);
-
-    }
+static visiKeleiviai = 0
+static bendrasKeleiviuSkaicius(keleiviuSkaicius) {
+    Troleibusas.visiKeleiviai = Troleibusas.visiKeleiviai + keleiviuSkaicius
+    console.log(`Bendras keleiviu skaicius: ${Troleibusas.visiKeleiviai}`);
+    
+}
+constructor(name) {
+    this.name = name
+    this.keleiviuSkaicius = 0
+}
     ilipa(keleiviuSkaicius) {
         this.keleiviuSkaicius = this.keleiviuSkaicius + keleiviuSkaicius
-        console.log(`Ilipo ${keleiviuSkaicius} pakeleiviai`);
+        console.log(`Ilipo ${keleiviuSkaicius} pakeleiviai i ${this.name}`);
         Troleibusas.bendrasKeleiviuSkaicius(keleiviuSkaicius)
     }
     islipa(keleiviuSkaicius) {
         if (this.keleiviuSkaicius >= keleiviuSkaicius) {
             this.keleiviuSkaicius -=  keleiviuSkaicius
-            console.log(`Islipo ${keleiviuSkaicius} keleiviai: liko ${this.keleiviuSkaicius} vaziuojanciu.`);
-            console.log(this.visiKeleiviai);
+            console.log(`Islipo ${keleiviuSkaicius} keleiviai is ${this.name}: liko ${this.keleiviuSkaicius} vaziuojanciu.`);
             Troleibusas.bendrasKeleiviuSkaicius(keleiviuSkaicius * -1)
         } else {
+            console.log(`Islipo visi keleiviai is ${this.name}. Negali islipti daugiau nei ilipo.`);
             Troleibusas.bendrasKeleiviuSkaicius(-this.keleiviuSkaicius)
             this.keleiviuSkaicius = 0
-            console.log(`Negali islipti daugiau nei ilipo.`);
-           
         }
          }
     vaziuoja() {
-        console.log(`${this.name} dabar veza ${this.keleiviuSkaicius} keleivius`);
+        this.keleiviuSkaicius < 1 ? console.log(`Troleibuse ${this.name} keleiviu nera, pravalas...`) : console.log(`${this.name} dabar veza ${this.keleiviuSkaicius} keleivius`);
     }
     keleiviuSkaiciusVisuoseTroleibusuose() {
         console.log(`Bendras keleiviu skaicius: ` + this.visiKeleiviai);
     }
 }
-const trulikas = new Troleibusas(`trulikas`)
-trulikas.vaziuoja()
-trulikas.ilipa(5)
-trulikas.vaziuoja()
-trulikas.islipa(3)
-trulikas.vaziuoja()
+const Trulikas = new Troleibusas(`Trulikas`)
+Trulikas.vaziuoja()
+Trulikas.ilipa(5)
+Trulikas.vaziuoja()
+Trulikas.islipa(3)
+Trulikas.vaziuoja()
+Trulikas.ilipa(10)
+Trulikas.islipa(15)
 
 // 4 (STATIC) Sukurti metodą keleiviuSkaiciusVisuoseTroleibusuose(), kuris rodytų bendrą keleivių skaičių visuose Troleibusas objektuose. 
 // Bendram kelevių skaičiaus skaičiavimui sukurkite statinį metodą bendrasKeleiviuSkaicius(keleiviuSkaicius), 
