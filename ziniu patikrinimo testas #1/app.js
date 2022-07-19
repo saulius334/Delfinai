@@ -43,16 +43,5 @@ console.log(catOwners);
 // kuris kartojasi (nesvarbu kiek kartų) ir jį atspausdinkite su console.log().
 console.log(`--------5`);
 // blet tokia nesamone kad nu na
-let found = false
-for (let i = 0; i < owners.length; i++) {
- for (let j = i + 1; j < owners.length;j++) {
-  if (owners[i] === owners[j]) {
-    console.log(owners[i])
-    found = true
-    break;
-  }
- }
- if (found === true) {
-  break;
- }
- }
+
+console.log(owners.find(a => owners.indexOf(a) !== owners.lastIndexOf(a))); 
