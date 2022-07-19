@@ -19,7 +19,7 @@ console.log(owners);
 // Sumuokite tik tas katinukų reikšmes, kurios be liekanos dalijasi iš 3.
 // Rezultatą atspausdinkite su console.log();
 console.log(`--------2`);
-let dalijasi = cats.filter(a => (a / 3) === ((a / 3) - (a / 3 % 1)))
+let dalijasi = cats.filter(a => a % 3 === 0)
 console.log(dalijasi.reduce((a,b) => a + b));
 
 //3
@@ -27,6 +27,7 @@ console.log(dalijasi.reduce((a,b) => a + b));
 // pridėkite vardą 'Nausėda'. Masyvas po pridėjimo turi turėti 11 elementų;
 console.log(`--------3`);
 owners.unshift(`Nausėda`)
+console.log(owners);
 //4
 // Sukurkite trečią masyvą catOwners, kurio reikšmė yra stringas, 
 // sudarytas iš vardo ir katinukų skaičiaus (pvz Deimantė has 2 cats),
@@ -35,8 +36,15 @@ owners.unshift(`Nausėda`)
 // Atkreipkite dėmesį, kad pirma mergaitė owners masyve yra ne pirmas elementas su indeksu 0 (pirmas yra 'Nausėda'),
 // o antrasis su indeksu 1. Pirmas katinukų skaičius cats masyve yra standartiškai su indeksu 0. Masyvą atspausdinkite su console.log();
 console.log(`--------4`);
+
+
+
+
 let catOwners = owners.map((a, i, t) => `${t[i + 1]} has ${cats[i]} cats`).slice(0, -1)
 console.log(catOwners);
+
+
+
 
 //5
 // Suraskite vieną (tik vieną) vardą owners masyve,

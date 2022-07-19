@@ -33,57 +33,45 @@ console.log(`pirmas (mažiausias) indeksas, kurio elemento reikšmė didesnė u�
  // 3 Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 200. Suskaičiuokite kiek yra kiekvienos raidės.
  console.log(`--------3`);
  let x = [`A`, `B`, `C`, `D`]
- let raideles = [...Array(200)].map(a => x[random(0, x.length - 1)])
+ let raideles = [...Array(200)].map(a => [`A`, `B`, `C`, `D`][random(0, x.length - 1)])
  let count = []
  for (const i of raideles) {
  count[i] ? count[i] += 1 : count[i] = 1
- }
+}
+let rez = {A : 0, B : 0, C : 0, D : 0}
+raideles.forEach(a => rez[a]++)
+console.log(rez);
 console.log(count);
 // 4 Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. Sudėkite masyvus, sudėdami atitinkamas reikšmes. Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) reikšmių ir kiek unikalių kombinacijų gavote.
 console.log(`--------4`);
-let pirmas = [...Array(200)].map(a => x[random(0, x.length - 1)])
-let antras = [...Array(200)].map(a => x[random(0, x.length - 1)])
-let trecias = [...Array(200)].map(a => x[random(0, x.length - 1)])
-let ohoho = []
-for (let i = 0; i < pirmas.length; i++) {
-    ohoho.push(pirmas[i] + antras[i] + trecias[i])
-}
+let [pirmas, antras, trecias] = [[...Array(200)].map(a => x[random(0, x.length - 1)]),
+                                 [...Array(200)].map(a => x[random(0, x.length - 1)]),
+                                 [...Array(200)].map(a => x[random(0, x.length - 1)])]
+let ohoho = [...Array(200)].map((a, i) => pirmas[i] + antras[i] + trecias[i])
 let unikalios = [...new Set(ohoho)]
+let kombinac = [...new Set(unikalios.map(a => a.split(``).sort().join(``)).sort())]
 console.log(`Sudetas masyvas: `);
 console.log(ohoho);
 console.log(`Unikalios reiksmes: `);
 console.log(unikalios);
 console.log(`Unikalios kombinacijos: `);
-let kombinac = unikalios.map(a => a.split(``).sort().join(``)).sort()
-console.log([...new Set(kombinac)]);
+console.log(kombinac);
 
 
 console.log(`ayo wtf ?`);
 
 // 5 Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios savo masyve (t.y. neturi kartotis).
 console.log(`--------5`);
-// let one = [...Array(100)].map(a,i,t => t.includes(random(100, 999)) ? )
-// console.log(one);
-let one = []
-while (one.length < 100) {
-  let x = random(100, 999)
-  if (one.includes(x)) {
-    continue
-  } else {
-    one.push(x)
-  }
+let [on, tw] = [new Set(), new Set()]
+while (on.size < 100) {
+  on.add(random(100,999))
 }
-console.log(one);
-let two = []
-while (two.length < 100) {
-  let x = random(100, 999)
-  if (two.includes(x)) {
-    continue
-  } else {
-    two.push(x)
-  }
+console.log(on);
+while (tw.size < 100) {
+  tw.add(random(100,999))
 }
-console.log(two);
+console.log(tw);
+let [one, two] = [[...on],[...tw]]
 // 6 Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 5 uždavinio masyve, bet nėra antrame 5 uždavinio masyve.
 console.log(`--------6`);
 let filtered = one.filter(a => two.includes(a) === false)
@@ -100,12 +88,18 @@ let wtf = [...Array(Math.max(...one))]
 for (let i = 0; i < wtf.length;i++) {
   wtf[one[i]] = two[i]
 }
+console.log(wtf.forEach((a,i) => one[a] = two[i]));
 console.log(wtf);
 
 // 9 Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.
 console.log(`--------9`);
+let bbz = [random(5,25), random(5,25)]
 let taisykle = [random(5,25), random(5,25), ...Array(8)]
 for(let i = 2; i < taisykle.length;i++) {
 taisykle[i] = taisykle[i - 2] + taisykle[i - 1]
 }
 console.log(taisykle);
+
+let xx = [...Array(8)].map((a,i,t) => i < 1 ? bbz[i] + bbz[i+1] : i < 2 ? bbz[i] + t[0] : t[i] + t[i + 1])
+console.log(bbz);
+console.log(xx);

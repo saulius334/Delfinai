@@ -90,9 +90,27 @@ console.log(skyreliai);
 // 16 Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
 console.log(`---------------16`);
 let penkisimtai = [random(3, 10)]
-while (penkisimtai.reduce((a,b) => a + b) < 500) {
+while (penkisimtai.reduce((a,b) => a + b) < 484) {
     penkisimtai.push(random(3, 10))
 }
+while (penkisimtai.reduce((a,b) => a + b) < 500) {
+    let x = random(3,10)
+    let z = random(3,10)
+    if (penkisimtai.reduce((a,b) => a + b) + (x + z) === 500) {
+        penkisimtai.push(x, z)
+        console.log(x, z);
+        break;
+    } else {
+        continue
+    }
+}
+
+77 + 33 = 100
+
+
+
+
+console.log(penkisimtai.reduce((a,b) => a + b));
 skyreliai[1].push(...penkisimtai)
 console.log(skyreliai);
 
