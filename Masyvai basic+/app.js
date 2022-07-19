@@ -5,7 +5,7 @@ function random(min, max) {
   }
 // 1 Sugeneruokite masyvą iš 30 elementų (indeksai nuo 0 iki 29), kurių reikšmės yra atsitiktiniai skaičiai nuo 5 iki 25.
 console.log(`--------1`);
-let masyvas = [...Array(30)].map(a => random(5, 25))
+let masyvas = [...Array(30)].map(_ => random(5, 25))
 console.log(`Sugeneruotas masyvas: ` + masyvas);
 
 // 2 Naudodamiesi 1 uždavinio masyvu:
@@ -23,8 +23,7 @@ console.log(minusas);
  let minusas2 = minusas.concat([...Array(10)].map(a => random(5, 25)))
  console.log(minusas2);
  //2 f) Iš masyvo elementų sukurkite du naujus masyvus. Vienas turi būti sudarytas iš neporinių indeksų reikšmių, o kitas iš porinių (pagal neporinį-porinį indeksą, ne reikšmę);
-let poriniai = minusas2.filter((a, i) => i % 2 === 0)
-let neporiniai = minusas2.filter((a, i) => !(i % 2 === 0))
+ const [poriniai, neporiniai] = [minusas2.filter((a, i) => i % 2 === 0), minusas2.filter((a, i) => !(i % 2 === 0))]
 console.log(`Porines indeksų reikšmes: ` + poriniai);
 console.log(`Neporines indeksų reikšmes: ` + neporiniai);
 //2 g) Pirminio masyvo elementus su poriniais indeksais padarykite lygius 0 jeigu jie didesni už 15;
@@ -36,7 +35,7 @@ console.log(`pirmas (mažiausias) indeksas, kurio elemento reikšmė didesnė u�
  let x = [`A`, `B`, `C`, `D`]
  let raideles = [...Array(200)].map(a => x[random(0, x.length - 1)])
  let count = []
- for (const i of raideles.flat()) {
+ for (const i of raideles) {
  count[i] ? count[i] += 1 : count[i] = 1
  }
 console.log(count);

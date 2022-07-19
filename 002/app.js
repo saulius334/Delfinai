@@ -35,3 +35,11 @@ console.log(sort);
 let z = [6, 1, 2, 5, 10, 90]
 let reduce = z.reduce((a,b) => a + b)
 console.log(reduce);
+
+
+const [t,o] = [12, 54]
+
+const {a, bla, id} = {bla:12,
+                     id: 45,
+                    k: 0}
+console.log(id);
