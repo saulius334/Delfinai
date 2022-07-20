@@ -198,7 +198,7 @@ krepsys.krepselioTurinys()
     }
     ispilti() {
         this.kiekis = 0
-        console.log(`ispylei ${this.name}!!! Eik pirkt nauja! ${this.name} ${this.kiekis} gr.`);
+        console.log(`   spylei ${this.name}!!! Eik pirkt nauja! ${this.name} ${this.kiekis} gr.`);
     }
     stiklinejeYra() {
         console.log(`${this.name} yra: ` + this.kiekis + ` gramai`);
@@ -225,31 +225,48 @@ krepsys.krepselioTurinys()
 function random(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); }
+    return Math.floor(Math.random() * (max - min + 1) + min); 
+}
 class Grybas {
     constructor() {
-        this.valgomas = [true, false](random(0,1))
-        this.sukirmijes = [true, false](random(0,1))
+        this.valgomas = [true, false][random(0,1)]
+        this.sukirmijes = [true, false][random(0,1)]
         this.svoris = random(5, 45)
     }
 }
 class Krepsys {
-    constructor(dydis) {
-        dydis = 500
+    constructor() {
+        this.dydis = 500
         this.prikrauta = 0
+        this.krepsiovVidus = new Map([])
     }
     kiekgrybu() {
         console.log(this.prikrauta);
     }
+    deti(grybas) {
+        if (grybas.valgomas === true && grybas.sukirmijes === false) {
+            this.krepsiovVidus.set(grybas)
+            this.prikrauta++
+        }
+    }
 }
-let krepsys1 = new Krepsys(0)
-while (Krepsys.dydis < 500) {
-let x = new Grybas()
-if (x.valgomas === true && x.sukirmijes === false) {
-    Object.assign(krepsys1, x)
-    this.prikrauta++
-} else {
-    continue
+
+let krepsys1 = new Krepsys()
+
+// while (krepsys1.prikrauta < krepsys1.dydis) {
+// let randomGrybas = new Grybas()
+// if (randomGrybas.valgomas === true && randomGrybas.sukirmijes === false) {
+//     Object.assign(krepsys1, {randomGrybas})
+//     krepsys1.prikrauta++
+// } else {
+//     continue
+// }
+// }
+function EitiGrybauti() {
+while (krepsys1.prikrauta < krepsys1.dydis) {
+    let randomGrybas = new Grybas()
+    krepsys1.deti(randomGrybas)
 }
 }
-// krepsys1.kiekgrybu()
+// EitiGrybauti()
+console.log(krepsys1);
