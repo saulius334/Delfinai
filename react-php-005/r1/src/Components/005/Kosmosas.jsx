@@ -1,11 +1,11 @@
 import random from "../../functions/random"
 
-function Kosmosas({spalva}) {
+function Kosmosas({spalva, krastas, props}) { // props
 
     return (
         <>
-    <div style = {{color: spalva, backgroundColor: `skyblue`, padding: `100px`,fontSize: random(20,60)} } >Kosmosas </div>
-    <div>MARSAS</div>
+    <div style = {{color: spalva /*arba props.spalva*/, backgroundColor: `skyblue`, padding: krastas,fontSize: random(20,60)} } >Kosmosas </div> 
+    <div style = {props}>MARSAS</div>
     </>
     )
 }
