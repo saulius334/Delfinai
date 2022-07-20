@@ -238,14 +238,14 @@ class Krepsys {
     constructor() {
         this.dydis = 500
         this.prikrauta = 0
-        this.krepsiovVidus = new Map([])
+        this.krepsiovVidus = new Map()
     }
     kiekgrybu() {
         console.log(this.prikrauta);
     }
     deti(grybas) {
         if (grybas.valgomas === true && grybas.sukirmijes === false) {
-            this.krepsiovVidus.set(grybas)
+            this.krepsiovVidus.set(grybas) //biski grybo value undefined, bet matosi viskas. galima Object.entries(grybas) arbba Object.values(grybas), bet reikia deti counta i while loop kad gauti mapo pirma value iterable
             this.prikrauta++
         }
     }
@@ -253,20 +253,11 @@ class Krepsys {
 
 let krepsys1 = new Krepsys()
 
-// while (krepsys1.prikrauta < krepsys1.dydis) {
-// let randomGrybas = new Grybas()
-// if (randomGrybas.valgomas === true && randomGrybas.sukirmijes === false) {
-//     Object.assign(krepsys1, {randomGrybas})
-//     krepsys1.prikrauta++
-// } else {
-//     continue
-// }
-// }
 function EitiGrybauti() {
 while (krepsys1.prikrauta < krepsys1.dydis) {
     let randomGrybas = new Grybas()
     krepsys1.deti(randomGrybas)
 }
 }
-// EitiGrybauti()
+EitiGrybauti()
 console.log(krepsys1);
