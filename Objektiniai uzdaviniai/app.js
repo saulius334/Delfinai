@@ -181,20 +181,75 @@ krepsys.krepselioTurinys()
 //    kuris į konsolę atspausdintų kiek stiklinėje yra skysčio. Sukurti tris stiklinės objektus su tūriais: 200, 150, 100.
 //     Didžiausią pripilti pilną ir tada ją ispilti į mažesnę stiklinę, o mažesnę į dar mažesnę.
  class Stikline {
-    constructor(turis) {
+    constructor(name, turis) {
+        this.name = name
         this.kiekis = 0
+        this.turis = turis
     }
     ipilti(kiekis) {
-        this.kiekis += kiekis > turis ? this.kiekis = turis : this.kiekis += kiekis
+        if (this.kiekis + kiekis > this.turis) {
+            this.kiekis = this.turis
+            console.log(`i ${this.name} ipyle ${kiekis} gramus. Per daug ipylei bl! Bega per krastus! ${this.name} sklidnas ties ${this.turis} gramais`)
+        } else {
+            this.kiekis = this.kiekis + kiekis
+            console.log(`i ${this.name} ipyle ${kiekis} gramus`)
+
+        }
     }
     ispilti() {
-        console.log(this.kiekis);
+        this.kiekis = 0
+        console.log(`ispylei ${this.name}!!! Eik pirkt nauja! ${this.name} ${this.kiekis} gr.`);
     }
     stiklinejeYra() {
-        console.log(`Stiklineje yra: ` + this.kiekis);
+        console.log(`${this.name} yra: ` + this.kiekis + ` gramai`);
     }
  }
 
- const bokalas = new Stikline(200)
- const taure = new Stiklis(150)
- const cerka = new Stikline(100)
+ const bokalas = new Stikline(`bokalas`,200)
+ const taure = new Stikline(`taure`,150)
+ const cerka = new Stikline(`cerka`, 100)
+ bokalas.ipilti(29)
+ bokalas.stiklinejeYra()
+ bokalas.ipilti(170)
+ bokalas.stiklinejeYra()
+ bokalas.ipilti(170)
+ bokalas.ispilti()
+
+  // 9 Sukurti klasę Grybas. Sukurti klasę Krepsys. Krepsys, kuri turi savybę dydis,kuriai konstruktoriuje yra priskiriama reikšmė 500 
+//   ir savybę prikrauta (kuri pradžioje lygi 0). Grybas turi tris savybes, kurios taip pat yra paskaičiuojamos 
+//   konstruktoriuje: valgomas, sukirmijes, svoris. Kuriant Grybo objektą jo savybės turi būti atsitiktinai (rand funkcija) priskiriamos taip:
+//    valgomas- true arba false, sukirmijes- true arba false ir svoris- nuo 5 iki 45. Eiti grybauti, t.y. Kurti naujus Grybas objektus,
+//     jeigu nesukirmijęs ir valgomas dėti į Krepsi objektą, t.y. Vykdyti deti(grybas) metodą kol bus pririnktas pilnas krepšys nesukirmijusių
+//      ir valgomų grybų (gali būti truputį daugiau nei dydis).
+
+function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); }
+class Grybas {
+    constructor() {
+        this.valgomas = [true, false](random(0,1))
+        this.sukirmijes = [true, false](random(0,1))
+        this.svoris = random(5, 45)
+    }
+}
+class Krepsys {
+    constructor(dydis) {
+        dydis = 500
+        this.prikrauta = 0
+    }
+    kiekgrybu() {
+        console.log(this.prikrauta);
+    }
+}
+let krepsys1 = new Krepsys(0)
+while (Krepsys.dydis < 500) {
+let x = new Grybas()
+if (x.valgomas === true && x.sukirmijes === false) {
+    Object.assign(krepsys1, x)
+    this.prikrauta++
+} else {
+    continue
+}
+}
+// krepsys1.kiekgrybu()
