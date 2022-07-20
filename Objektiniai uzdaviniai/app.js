@@ -3,16 +3,25 @@
 // ir metodą išvedantį akmenų kiekį į konsolę- kiekPririnktaAkmenu(). Sukurti vieną kibiro objektą ir pademonstruoti akmenų rinkimą į kibirą ir rezultatų išvedimą.
 
 class Kibiras1 {
+    static visiAkmenys = 0
+    static akmenuSkaiciusVisuoseKibiruose() {
+        console.log(`Visi akmenys: ` + Kibiras1.visiAkmenys);
+    }
+    static bendrasAkmenuSkaicius(akmenuSkaicius) {
+        Kibiras1.visiAkmenys += akmenuSkaicius
+    }
     constructor() {
         this.akmenuKiekis = 0
     }
     prideti1Akmeni() {
         this.akmenuKiekis = this.akmenuKiekis + 1;
         console.log(`imeciau 1 akmeni i kibira`)
+        Kibiras1.bendrasAkmenuSkaicius(1)
     }
     pridetiDaugAkmenu(kiekis) {
         this.akmenuKiekis = this.akmenuKiekis + kiekis
         console.log(`imeciau ${kiekis} akmenu i kibira`);
+        Kibiras1.bendrasAkmenuSkaicius(kiekis)
     }
     kiekPririnktaAkmenu() {
         console.log(`Kiek pririnkta akmenu: ` + this.akmenuKiekis);
@@ -24,6 +33,7 @@ kibiras2.prideti1Akmeni()
 kibiras2.kiekPririnktaAkmenu()
 kibiras2.pridetiDaugAkmenu(20)
 kibiras2.kiekPririnktaAkmenu()
+Kibiras1.akmenuSkaiciusVisuoseKibiruose()
 
 // 2 Sukurti klasę Pinigine. Konstruktoriuje sukurti dvi savybes popieriniaiPinigai ir metaliniaiPinigai.
 // Parašyti metodą ideti(kiekis), kuris prideda pinigus į piniginę. 
@@ -34,14 +44,24 @@ class Pinigine {
     constructor() {
         this.popieriniaiPinigai = 0
         this.metaliniaiPinigai = 0
+        this.monetos = 0
+        this.banknotai = 0
     }
     ideti(kiekis) {
         kiekis > 2 ? this.popieriniaiPinigai = this.popieriniaiPinigai + kiekis : this.metaliniaiPinigai = this.metaliniaiPinigai + kiekis
+        kiekis > 2 ? this.banknotai++ : this.monetos++
         console.log(`Ideta ${kiekis} pinigeliu`);
+
     }
     skaiciuoti() {
         console.log(`Popieriainiai pinigai: ` + this.popieriniaiPinigai);
         console.log(`Metaliniai pinigai: ` + this.metaliniaiPinigai);
+    }
+    monetos() {
+        console.log(`Pinigineje yra ${this.monetos} monetos`);
+    }
+    banknotai() {
+        console.log(`Pinigineje yra ${this.banknotai} banknotai`);
     }
 }
 
@@ -120,6 +140,61 @@ Trulikas.islipa(15)
 
 class PirkiniuKrepselis {
     constructor() {
-        this.turinys
+        this.turinys = new Map()
+    }
+    idetiSureli(kiekis) {
+        let suris = this.turinys.get(`Surelis`)
+        this.turinys.has(`Surelis`) ? this.turinys.set(`Surelis`, suris + kiekis) : this.turinys.set(`Surelis`, kiekis)
+    }
+    idetiPieno(kiekis) {
+        let pienokiekis = this.turinys.get(`Pienas`)  
+        this.turinys.has(`Pienas`) ? this.turinys.set(`Pienas`, pienokiekis + kiekis) : this.turinys.set(`Pienas`, kiekis)
+    }
+    idetiDuonos(kiekis) {
+        let duonos = this.turinys.get(`Duona`)
+        this.turinys.has(`Duona`) ? this.turinys.set(`Duona`, duonos + kiekis) : this.turinys.set(`Duona`, kiekis)
+    }
+    krepselioTurinys() {
+    console.log(this.turinys);
     }
 }
+
+const krepsys = new PirkiniuKrepselis()
+
+
+krepsys.idetiDuonos(5)
+krepsys.idetiDuonos(5)
+krepsys.idetiSureli(9)
+krepsys.idetiSureli(9)
+krepsys.idetiPieno(2)
+krepsys.idetiPieno(2)
+krepsys.krepselioTurinys()
+
+// 6 Patobulinti 2 uždavinio piniginę taip, kad būtų galima skaičiuoti kiek piniginėje yra monetų ir kiek banknotų.Parašyti metodą monetos(), kuris skaičiuotų kiek yra piniginėje monetų ir metoda banknotai() - popierinių pinigų skaičiavimui. Kiekvieną atskirą dėjimą (ideti(kiekis) metodo kvietimą) laikykite vienu banknotu ar viena moneta.
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// 7 (STATIC) Klasėje Kibiras1 (pirmas uždavinys) sukurti statinį metodą akmenuSkaiciusVisuoseKibiruose(), kuris rodytų bendrą visuose kibiruose pririnktų akmenų kiekį (visuose sukurtuose Kibiras objektuose). Skaičiuoti akmenim, kurie buvo surinkti visuose objektuose, sukurkite statini metodą bendrasAkmenuSkaicius(akmenuSkaicius), kuris pridėtų prie statinės savybės visiAkmenys (kurioje yra įrašytas ir saugomas bendras akmenų skaičius). Taip pat atitinkamai modifikuokite metodus prideti1Akmeni(),  pridetiDaugAkmenu(kiekis).
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+// 8 Sukurti klasę Stikline. Sukurti savybes turis ir kiekis. Turis turi būti pasirenkamas objekto kūrimo metu. Parašyti metodą ipilti(kiekis),
+//  kuris keistų savybę kiekis. Jeigu stiklinės tūris yra mažesnis nei pilamas kiekis- kiekis netelpa ir būna lygus tūriui. Parašyti metodą ispilti(),
+//   kuris grąžiną kiekį. Pilant išpilamas visas kiekis, tas kas netelpa, nuteka per stalo viršų.  Sukurti metodą stiklinejeYra(),
+//    kuris į konsolę atspausdintų kiek stiklinėje yra skysčio. Sukurti tris stiklinės objektus su tūriais: 200, 150, 100.
+//     Didžiausią pripilti pilną ir tada ją ispilti į mažesnę stiklinę, o mažesnę į dar mažesnę.
+ class Stikline {
+    constructor(turis) {
+        this.kiekis = 0
+    }
+    ipilti(kiekis) {
+        this.kiekis += kiekis > turis ? this.kiekis = turis : this.kiekis += kiekis
+    }
+    ispilti() {
+        console.log(this.kiekis);
+    }
+    stiklinejeYra() {
+        console.log(`Stiklineje yra: ` + this.kiekis);
+    }
+ }
+
+ const bokalas = new Stikline(200)
+ const taure = new Stiklis(150)
+ const cerka = new Stikline(100)
