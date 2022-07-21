@@ -1,8 +1,8 @@
-function Trysprops({props1, props2,props3}) {
+function Trysprops({vienas,du,trys}) {
 return (
     <>
-    <h1 style={props3}>{props1}</h1>
-    <h2 style={props3}>{props2}</h2>
+    <h1 style={trys}>{vienas}</h1>
+    <h2 style={trys}>{du}</h2>
     </>
 )
 }

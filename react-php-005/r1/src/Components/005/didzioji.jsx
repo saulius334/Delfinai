@@ -1,4 +1,4 @@
-function Didzioji({props}) {
-    return props[0] === props[0].toLowerCase() ? <div>{props}</div> : <div></div>
+function Didzioji({name}) {
+    return name[0] === name[0].toLowerCase() ? <div>{name}</div> : <div></div>
 }
 export default Didzioji

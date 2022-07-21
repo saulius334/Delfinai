@@ -20,9 +20,9 @@ const circle = {
     borderRadius:`50%`,
 }
 
-function Kasantras({props, count}) {
+function Kasantras({name, count}) {
 
-    return count % 2 === 0 ? <div style={kvadrat}>{props}</div> : <div style={circle}>{props}</div>
+    return count % 2 === 0 ? <div style={kvadrat}>{name}</div> : <div style={circle}>{name}</div>
     
 }
 export default Kasantras

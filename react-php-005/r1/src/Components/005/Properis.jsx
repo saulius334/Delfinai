@@ -1,5 +1,5 @@
-function Props({props}) {
-return <h1>{props}</h1>
+function Properis({pirmas}) {
+return <h1>{pirmas}</h1>
 }
 
-export default Props
+export default Properis

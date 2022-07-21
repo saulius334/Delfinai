@@ -2,7 +2,7 @@ import './App.css';
 import Kn from './Components/005/kn';
 import Kosmosas from './Components/005/Kosmosas';
 import Labaszuiki from './Components/005/labaszuiki';
-import Props from './Components/005/Properis';
+import Properis from './Components/005/Properis';
 import ZebrasBebras from './Components/005/zebras bebras';
 import random from "../src/functions/random"
 import Duprops from './Components/005/DuProps';
@@ -31,21 +31,21 @@ function App() {
           masyvas.map((a,i) => <Kn key={i} name={a}></Kn>)
         }
         <Labaszuiki></Labaszuiki>
-        <Props props = "Laba diena"> </Props>
-        <ZebrasBebras props = {random(0,2)}></ZebrasBebras>
-        <Duprops props1 = "as esu" props2 = "Maladec"></Duprops>
-        <Trysprops props1= "Saulius" props2= "Jonas" props3={{color: "cyan"}}></Trysprops>
+        <Properis pirmas = "Laba diena"> </Properis>
+        <ZebrasBebras rand = {random(0,2)}></ZebrasBebras>
+        <Duprops vienas = "as esu" du = "Maladec"></Duprops>
+        <Trysprops vienas= "Saulius" du= "Jonas" trys={{color: "cyan"}}></Trysprops>
        {
-        dogs.map((a,i) => <Dogskvadrat key={i} props={a}></Dogskvadrat>)
+        dogs.map((dogs,i) => <Dogskvadrat key={i} name={dogs}></Dogskvadrat>)
        }
       {
-        [...dogs].sort((a,b) => b.length - a.length).map((a,i) => <Dogscircle key={i} props={a} count={i}></Dogscircle>)
+        [...dogs].sort((a,b) => b.length - a.length).map((dogs,i) => <Dogscircle key={i} name={dogs} count={i}></Dogscircle>)
       }
       {
-        dogs.map((a,i) => <Kasantras key={i} props={a} count={i}></Kasantras>)  
+        dogs.map((dogs,i) => <Kasantras key={i} name={dogs} count={i}></Kasantras>)  
       }
       {
-        dogs.map((a,i) => <Didzioji key={i} props={a}></Didzioji>)
+        dogs.map((dogs,i) => <Didzioji key={i} name={dogs}></Didzioji>)
       }
       {
         dogs.map((dogs,i,t) => <Spalvotisunys key={i} name={dogs} array={t}></Spalvotisunys>)

@@ -1,8 +1,8 @@
-function Duprops({props1, props2}) {
+function Duprops({vienas, du}) {
     return (
         <>
-        <h1>{props1}</h1>
-        <h2>{props2}</h2>
+        <h1>{vienas}</h1>
+        <h2>{du}</h2>
         </>
     )
 }

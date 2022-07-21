@@ -11,7 +11,7 @@ const style = {
 }
 
 
-function Dogscircle({props, count}) {
-    return <div style={style}><p>{count + 1}. {props}</p></div>
+function Dogscircle({name, count}) {
+    return <div style={style}><p>{count + 1}. {name}</p></div>
 }
 export default Dogscircle

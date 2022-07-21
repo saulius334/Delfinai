@@ -8,9 +8,9 @@ const style = {
     backgroundColor: "white",
     color: `black`
 }
-function Dogskvadrat({props}) {
+function Dogskvadrat({name}) {
 
-    return <div style = {style}><p>{props}</p></div>
+    return <div style = {style}><p>{name}</p></div>
     
 
 }
