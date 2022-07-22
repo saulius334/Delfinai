@@ -8,6 +8,7 @@ import CircleBlox2 from './Components/006/circlechangeblox2';
 import Score from './Components/006/score';
 import Kvadratukai from './Components/006/kvadratukai';
 import Addblock from './Components/006/addblock';
+import Medziai from './Components/006/medziai';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Score></Score>
         <Kvadratukai></Kvadratukai>
         <Addblock></Addblock>
+        <Medziai></Medziai>
       </header>
     </div>
   );
