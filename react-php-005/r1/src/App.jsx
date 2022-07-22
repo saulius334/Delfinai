@@ -9,6 +9,8 @@ import Score from './Components/006/score';
 import Kvadratukai from './Components/006/kvadratukai';
 import Addblock from './Components/006/addblock';
 import Medziai from './Components/006/medziai';
+import Blackbox from './Components/006/Blackbox';
+import Keepme from './Components/006/trylocalstorage';
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Kvadratukai></Kvadratukai>
         <Addblock></Addblock>
         <Medziai></Medziai>
+        <Blackbox></Blackbox>
+        <Keepme></Keepme>
       </header>
     </div>
   );
