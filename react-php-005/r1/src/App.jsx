@@ -1,41 +1,38 @@
 import './App.css';
-import { useState } from "react"
-import Fun from './Components/006/fun';
-import Sad from './Components/006/sad';
+import { useState, useEffect } from "react"
 import randColor from './functions/randColor';
-import CircleBlox from './Components/006/circlechangeblok';
-import CircleBlox2 from './Components/006/circlechangeblox2';
-import Score from './Components/006/score';
-import Kvadratukai from './Components/006/kvadratukai';
-import Addblock from './Components/006/addblock';
-import Medziai from './Components/006/medziai';
-import Blackbox from './Components/006/Blackbox';
-import Keepme from './Components/006/trylocalstorage';
+import Kv from './Components/007/Kv';
+import Count from './Components/007/Count';
+import ForeverYoung from './Components/007/Amzinasskaitiklis';
+import Kvadrat from './Components/007/kvadratnr1';
+
 
 
 function App() {
-    const [count, setcount] = useState(0)
     const [kv, setKv] = useState([])
+    const kvPressed = () => {
+        setKv(k => [...k, randColor()])
+        console.log(`jaja`);
+    }
+
+    useEffect(() => {
+        if(kv.length === 0) {return;}
+        console.log(`jajajajajaja`);
+    }, [kv])
+
   return (
     <div className="App">
       <header className="App-header">
-       <Fun spalva = "blue" setcount={setcount}></Fun>
-       <Sad count={count}></Sad>
-       <h1 onClick={() => setKv(k => [...k, randColor()])}>State</h1>
+      <h1 onClick={kvPressed}>State</h1>
 
-       <div className='kv-bin'>
-        {
-            kv.map((c,i) => <div className='kv' style={{backgroundColor: c+`69`, borderColor: c}} key={i}></div>)
-        }
-       </div>
-        <CircleBlox></CircleBlox>
-        <CircleBlox2></CircleBlox2>
-        <Score></Score>
-        <Kvadratukai></Kvadratukai>
-        <Addblock></Addblock>
-        <Medziai></Medziai>
-        <Blackbox></Blackbox>
-        <Keepme></Keepme>
+<div className='kv-bin'>
+ {
+     kv.map((c,i) => <Kv key={i} c={c}></Kv>)
+ }
+</div>
+ <Count start={120}></Count>
+ <ForeverYoung></ForeverYoung>
+ <Kvadrat></Kvadrat>
       </header>
     </div>
   );
