@@ -5,6 +5,9 @@ import Kv from './Components/007/Kv';
 import Count from './Components/007/Count';
 import ForeverYoung from './Components/007/Amzinasskaitiklis';
 import Kvadrat from './Components/007/kvadratnr1';
+import Katinukai from './Components/007/Katinukai';
+import Santykis from './Components/007/Santykis';
+import SpalvosFontai from './Components/007/spalvosfontaifonai';
 
 
 
@@ -33,6 +36,9 @@ function App() {
  <Count start={120}></Count>
  <ForeverYoung></ForeverYoung>
  <Kvadrat></Kvadrat>
+ <Katinukai></Katinukai>
+ <Santykis></Santykis>
+ <SpalvosFontai></SpalvosFontai>
       </header>
     </div>
   );
