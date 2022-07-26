@@ -1,5 +1,12 @@
 import { useState } from "react"
 
+    let options = [
+        {value: 1, text: `one`},
+        {value: 2, text: `two`},
+        {value: 3, text: `three`},
+        {value: 100, text: `simts`}
+    ]
+
 function Select() {
 
     const [select, setSelect] = useState(`100`)
@@ -8,17 +15,16 @@ function Select() {
     }
     const [selected, setSelected] = useState(`100`)
     const sele = () => {
-        setSelected(select)
+        setSelected(options.find(o => select == o.value).text) // wtf ?
     }
     return (
         <>
         <fieldset>
             <legend>Select: {selected}</legend>
             <select value={select} onChange={hangleinput}>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="100">Simtas</option>
+               {
+                options.map(o => <option key={o.value} value={o.value}>{o.text}</option>)
+               }
             </select>
             <div>
             <button onClick={sele}>CLICK ME</button>
