@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Rangebox from "./rangebox";
+import Rangebox from "./Rangebox";
 
 function Range() {
   const [box, setBox] = useState([]);
