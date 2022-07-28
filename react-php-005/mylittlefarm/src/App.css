@@ -54,18 +54,20 @@
 .Karves {
 width: 48%;
 height: 800px;
-background-color: blue;
 border: 1px solid white;
 display: flex;
 flex-wrap: wrap;
-gap: 10px
+gap: 10px;
+justify-content: center;
+align-items: center;
 }
 .Avys {
   width: 48%;
   height: 800px;
-  background-color: red;
   border: 1px solid white;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
