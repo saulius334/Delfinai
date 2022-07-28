@@ -3,7 +3,7 @@ import AnimalsContext from "./AnimalsOne"
 
 function Line({data}) {
 
-    const {animalsTypes} = useContext(AnimalsContext)
+    const {animalsTypes, setDeleteData} = useContext(AnimalsContext)
 
 
     return (
@@ -20,7 +20,7 @@ function Line({data}) {
         </div>
         <div className="line_buttons">
             <button type="button" className="btn btn-outline-success m-2">Edit</button>
-            <button type="button" className="btn btn-outline-danger m-2">Delete</button>
+            <button type="button" onClick={()=> setDeleteData(data.id)} className="btn btn-outline-danger m-2">Delete</button>
         </div>
     </div>
   </li>
