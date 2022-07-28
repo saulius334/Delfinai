@@ -1,10 +1,10 @@
 import Random from "../functions/random"
 
-function RandomSerialnm() {
+function RandomSerialnm(raide) {
     let num = `#######`
     for(let i = 0; i < 7; i++) {
         num = num.replace('#', Random(0,9));
       }
-      return num
+      return raide === `A` ? `Avis ` + raide + num : `Karve ` + raide + num
 }
 export default RandomSerialnm

@@ -3,37 +3,26 @@ import Random from "../functions/random"
 import RandomSerialnm from "./RandomSerialnm"
 
 function Ganykla() {
-    const stylekarve = {
-        width: `80px`,
-        height: `80px`,
-        backgroundColor:`Brown`,
-        cursor: `pointer`,
-        margin: `10px`,
-    }
-    const styleavis = {
-        width: `80px`,
-        height: `80px`,
-        backgroundColor:`Brown`,
-        cursor: `pointer`,
-        margin: `10px`,
-    }
-    const pstyle = {
-        fontSize: `16px`
-    }
     const [avys, setAvys] = useState([])
     const [karves,setKarves] = useState([])
     const iganykla = () => {
+        setAvys(a => {
+        a = []
+           return [...a, ...Array(Random(5,20))].map(el=> RandomSerialnm(`A`))
+        })
         setKarves(a => {
             a = [];
-             return [...a,...Array(Random(5,20))]
-        })
-        setAvys(a => {
-            a = [];
-             return [...a,...Array(Random(5,20))]
+            return [...a, ...Array(Random(5,20))].map(el=> RandomSerialnm(`K`))
         })
     }
-    const switcheroo = () => {
-        console.log(`labas`);
+    const switcherooAvis = (a) => {
+        console.log(a);
+        setAvys(avys.filter(b => b !== a))
+        setKarves(b => [...b, a])
+    }
+    const switcherooKarve = (a) => {
+        setKarves(karves.filter(b => b !== a))
+        setAvys(b => [...b, a])
     }
     return (
         <>
@@ -43,12 +32,12 @@ function Ganykla() {
         <div className="Ganykla">
         <div className="Avys">
         {
-            avys.map((a,i) => <div onClick={switcheroo} style={styleavis} key={i}><p style={pstyle}>Avis A{RandomSerialnm()}</p></div>)
+            avys.map((a,i) => <div className={a.charAt(0) === `A` ? `styleavis` : `stylekarve`} onClick={()=>switcherooAvis(a)} key={i}><p className="pstyle">{a}</p></div>)
         }
         </div>
         <div className="Karves">
         {
-            karves.map((a,i) => <div onClick={switcheroo} style={stylekarve} key={i}><p style={pstyle}>Karve K{RandomSerialnm()}</p></div>)
+            karves.map((a,i) => <div className={a.charAt(0) === `A` ? `styleavis` : `stylekarve`} onClick={()=>switcherooKarve(a)} key={i}><p className="pstyle">{a}</p></div>)
         }
         </div>
         </div>

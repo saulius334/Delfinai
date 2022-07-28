@@ -71,3 +71,22 @@ align-items: center;
   justify-content: center;
   align-items: center;
 }
+.styleavis {
+  width: 80px;
+  height: 80px;
+  background-color:White;
+  color:black;
+  cursor: pointer;
+  margin: 10px;
+  border-Radius: 50%;
+}
+.stylekarve {
+  width: 80px;
+  height: 80px;
+  background-color:brown;
+  cursor: pointer;
+  margin: 10px;
+}
+.pstyle {
+  font-Size: 16px;
+}
