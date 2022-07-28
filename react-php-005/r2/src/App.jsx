@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
 import './App.scss';
 import './bootstrap.css';
 import AnimalsContext from './components/AnimalsOne';
-import Create from './components/Create';
+import CreateD from './components/Create';
+import List from './components/List';
+import { Create, Read } from './functions/localstorage'
+const keyLoca = `zoo`;
 
   const animalsTypes = [
     {id:1, type: `antis`},
@@ -10,20 +15,40 @@ import Create from './components/Create';
   ]
 
 function App() {
+  
+  const [lastUpdate, setLastUpdate] = useState(Date.now())
+
+  const [createData, setCreateData] = useState(null)
+  const [animals, setanimals] = useState(null)
+useEffect(() => {
+  setanimals(Read(keyLoca))
+},[lastUpdate])
+
+  useEffect(() => {
+    if (createData === null) {
+      return
+    }
+    Create(keyLoca, createData)
+    setLastUpdate(Date.now())
+    console.log(`time is: ` + Date.now());
+  },[createData])
+
   return (
     <>
     <AnimalsContext.Provider value={{
-      animalsTypes
+      animalsTypes,
+      setCreateData,
+      animals
     }}>
     <div className="container">
 
 <div className="row">
   <div className="col-4">
-    <Create/>
+    <CreateD/>
   </div>
 
   <div className="col-8">
-    One of three columns
+   <List/>
   </div>
 </div>
 </div>

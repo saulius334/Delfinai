@@ -2,10 +2,15 @@ import { useState } from "react";
 import { useContext } from "react";
 import AnimalsContext from "./AnimalsOne";
 
-function Create() {
-  const { animalsTypes } = useContext(AnimalsContext);
+function CreateD() {
+  const { animalsTypes, setCreateData } = useContext(AnimalsContext);
   const [type, setType] = useState(1);
   const [svoris,setSvori] = useState(``)
+  const buttonClick = () => {
+    setCreateData({type, svoris: parseFloat(svoris)})
+    setType(1)
+    setSvori(``)
+  }
   return (
     <>
       <div className="card m-4">
@@ -30,10 +35,10 @@ function Create() {
             <input type="text" className="form-control" value={svoris}  onChange={e => setSvori(e.target.value)}/>
             <small className="form-text text-muted">Please enter your animal weigth</small>
           </div>
-          <button type="button" className="btn btn-outline-info m-2">Add animal</button>
+          <button type="button" onClick={buttonClick} className="btn btn-outline-info m-2">Add animal</button>
         </div>
       </div>
     </>
   );
 }
-export default Create;
+export default CreateD;
