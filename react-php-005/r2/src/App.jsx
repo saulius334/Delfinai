@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import './App.scss';
 import './bootstrap.css';
+import './App.scss';
 import AnimalsContext from './components/AnimalsOne';
 import CreateD from './components/Create';
+import Edit from './components/Edit';
 import List from './components/List';
-import { Create, Destroy, Read } from './functions/localstorage'
+import { Create, Destroy, Read, Update } from './functions/localstorage'
 const keyLoca = `zoo`;
 
   const animalsTypes = [
@@ -17,12 +18,14 @@ const keyLoca = `zoo`;
 function App() {
   
   const [lastUpdate, setLastUpdate] = useState(Date.now())
-
+  const [modalData, setModalData] = useState(null)
   const [createData, setCreateData] = useState(null)
   const [deleteData, setDeleteData] = useState(null)
+  const [editData, setEditData] = useState(null)
   const [animals, setanimals] = useState(null)
+
 useEffect(() => {
-  setanimals(Read(keyLoca))
+  setanimals(Read(keyLoca).sort((a,b) => a.id - b.id))
 },[lastUpdate])
 
   useEffect(() => {
@@ -31,7 +34,6 @@ useEffect(() => {
     }
     Create(keyLoca, createData)
     setLastUpdate(Date.now())
-    console.log(`time is: ` + Date.now());
   },[createData])
 
   useEffect(() => {
@@ -40,8 +42,16 @@ useEffect(() => {
     }
     Destroy(keyLoca, deleteData)
     setLastUpdate(Date.now())
-    console.log(`time is: ` + Date.now());
   },[deleteData])
+
+  useEffect(() => {
+    if (editData === null) {
+      return
+    }
+    Update(keyLoca, editData, editData.id)
+    setLastUpdate(Date.now())
+  },[editData])
+
   return (
     <>
     <AnimalsContext.Provider value={{
@@ -49,6 +59,9 @@ useEffect(() => {
       setCreateData,
       animals,
       setDeleteData,
+      modalData,
+      setModalData,
+      setEditData,
     }}>
     <div className="container">
 
@@ -62,6 +75,7 @@ useEffect(() => {
   </div>
 </div>
 </div>
+<Edit></Edit>
 </AnimalsContext.Provider>
     </>
   );
