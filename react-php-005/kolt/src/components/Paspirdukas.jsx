@@ -1,24 +1,18 @@
-import Random from "../functions/Random"
+import { useContext } from "react";
+import RndSerial from "../functions/Rndserial";
+import KoltContext from "./KoltContext";
 
-function RndSerial() {
-    let x = `########`
-    for(let i = 0; i < x.length;i++) {
-        x = x.replace(`#`, Random(0,9))
-    }
+function Paspirdukas() {
+  const { nRida } = useContext(KoltContext);
+  console.log({
+    Serialnr: RndSerial(),
+    isBusy: false,
+    Rida: parseFloat(nRida),
+  });
+  return (
+    <div>
+      {RndSerial()} {parseFloat(nRida)}ffgddgf{" "}
+    </div>
+  );
 }
-
-
-
-class Scooter {
-    constructor(nRida) {
-        this.registrationCode = RndSerial();
-        this.isBusy = false;
-        this.rida = nRida === `` ? 0 : nRida
-    }
-}
-
-
-function Paspirdukas(nRida) {
-    return new Scooter(nRida)
-}
-export default Paspirdukas
+export default Paspirdukas;
