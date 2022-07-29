@@ -63,6 +63,14 @@
   background-color: lightgreen;
   box-shadow: 1px 1px 5px;
 }
+.btn.update {
+  padding: 5px 15px;
+}
+.updateButtonsDiv {
+  display: flex;
+  gap:20px;
+  margin-right: 20px;
+}
 .PaspirdukuSarasas {
   width: 65%;
   display: flex;
@@ -85,4 +93,7 @@
   width: 90%;
   border: 1px solid black;
   border-radius: 15px;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
 }
