@@ -1,5 +1,3 @@
-
-
 function GetID(key) {
 
     let id = localStorage.getItem(key + `_id`)
