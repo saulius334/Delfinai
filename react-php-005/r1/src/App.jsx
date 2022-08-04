@@ -1,40 +1,24 @@
-import { useRef } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.css';
-import M1 from './Components/009/M1';
-import ContextOne from './Contexts/ContextOne';
-
-
-
+import axios from 'axios';
 
 function App() {
-   
-    const good = useRef()
-    
-
-    const [count,setCount] = useState(0)
-    const bla = useRef(null)
-    const prideti = () => {
-        setCount(a => a + 1)
-        console.log(bla);
-        bla.current++
-        const my = good.current
-        console.log(my);
-    }
+   const [users, setUsers] = useState([]);
+  
+   useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(res => setUsers(res.data));
+   }, [])
   return (
-    <ContextOne.Provider value={{
-        pirmas: `Valio`,
-        spalva: `pink`
-    }}>
-    <div className="App">
-        <header className="App-header">
-        <h1>useContext useRef</h1>
-    <M1 kas={5}></M1>
-    {count}
-    <button ref={good} onClick={prideti}>+1</button>
-        </header>
-    </div>
-    </ContextOne.Provider>
+    <>
+    <h1>API</h1>
+<ul>
+    {
+        users.map(a => <li key={a.id}>{a.name}-{a.address.city}</li>)
+    }
+</ul>
+    </>
   );
 }
 
