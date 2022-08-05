@@ -5,12 +5,18 @@ import axios from 'axios';
 
 function App() {
    const [users, setUsers] = useState([]);
-  
+
    useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/users')
         .then(res => setUsers(res.data));
    }, [])
   return (
+    render(){
+      let langs = ["Ruby","ES6","Scala"]
+      return (<div>
+      {langs.map(it => <p>{it}</p>)}
+      </div>)
+      }
     <>
     <h1>API</h1>
 <ul>
